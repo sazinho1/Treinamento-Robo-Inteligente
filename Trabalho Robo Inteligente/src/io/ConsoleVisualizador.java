@@ -56,6 +56,10 @@ public class ConsoleVisualizador {
         System.err.println(ANSI_VERMELHO_BRILHANTE + "Erro: Entrada inválida. Por favor, digite um número inteiro." + ANSI_RESET);
     }
 
+    public static void imprimirErroPosicaoOcupada(Exception e){
+        System.err.println(ANSI_VERMELHO_BRILHANTE + "Erro: " + e.getMessage() + ANSI_RESET);
+    }
+
     public void imprimirMovimentoInvalido(String corRobo, String mensagemErro) {
         System.err.println(ANSI_VERMELHO_BRILHANTE + "Robô " + corRobo + " (Tentativa inválida): " + mensagemErro + ANSI_RESET);
     }

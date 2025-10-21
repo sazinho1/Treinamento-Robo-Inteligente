@@ -66,6 +66,18 @@ public class SimulacaoComObstaculo {
                     throw new CoordenadaInvalidaException(x, y);
                 }
 
+                if (x == area.getxAlimento() && y == area.getyAlimento()) {
+                throw new PosicaoOcupadaException("o alimento");
+                }
+                if (x == 0 && y == 0) {
+                    throw new PosicaoOcupadaException("a posição inicial (0,0)");
+                }
+                for (Obstaculo obsExistente : this.obstaculos) {
+                    if (obsExistente.getX() == x && obsExistente.getY() == y) {
+                        throw new PosicaoOcupadaException("outro obstáculo");
+                    }
+                }
+
                 if (tipo.equalsIgnoreCase("B")) {
                     this.obstaculos.add(new Bomba(x, y));
                     visualizador.ImprimirBombaAdicionada(x, y);
@@ -74,12 +86,19 @@ public class SimulacaoComObstaculo {
                     visualizador.ImprimirRochaAdicionada(x, y);
                 } else {
                     visualizador.ImprimirTipoOBstaculoInvalido();
-                    i--; // Repete a iteração
+                    i--;
                 }
+
             } catch (CoordenadaInvalidaException e) {
                 ConsoleVisualizador.imprimirErroCoordenadaInvalida(e);
                 visualizador.imprimirCoordenadaInvalidaObj(i);
                 i--; // Repete a iteração
+            }
+
+             catch (PosicaoOcupadaException e) {
+            ConsoleVisualizador.imprimirErroPosicaoOcupada(e);
+            visualizador.imprimirCoordenadaInvalidaObj(i);
+            i--;
             }
         }
     }
@@ -100,7 +119,7 @@ public class SimulacaoComObstaculo {
 
             visualizador.imprimirMatriz(roboNormal, roboInteligente, area, obstaculos);
 
-            try { Thread.sleep(1000); } catch (InterruptedException e) { }
+            try { Thread.sleep(1500); } catch (InterruptedException e) { }
 
             // Condição de parada caso os dois explodam
             if (roboNormal.isExplodido() && roboInteligente.isExplodido()) {
