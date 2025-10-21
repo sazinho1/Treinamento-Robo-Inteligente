@@ -1,10 +1,10 @@
 package principal;
 
+import ambiente.AreaDeJogo;
 import excecoes.CoordenadaInvalidaException;
 import io.ConsoleReceptor;
 import io.ConsoleVisualizador;
 import robos.RoboNormal;
-import simulacoes.AreaDeJogo;
 import simulacoes.SimulacaoAleatoria;
 
 public class Main2 {
@@ -14,13 +14,14 @@ public class Main2 {
         ConsoleVisualizador visualizador = new ConsoleVisualizador();
         RoboNormal robo1 = new RoboNormal("azul", visualizador);
         RoboNormal robo2 = new RoboNormal("vermelho", visualizador);
-        
+        visualizador.boasVindas();
+
         try {
             visualizador.determinarPosicaoXDoAlimento();
-            int xAlimento = receptor.determinarPosicaoXDoAlimento();
+            int xAlimento = receptor.determinarPosicaoX();
         
             visualizador.determinarPosicaoYDoAlimento();
-            int yAlimento = receptor.determinarPosicaoYDoAlimento();
+            int yAlimento = receptor.determinarPosicaoY();
 
             area = new AreaDeJogo(xAlimento, yAlimento);
         

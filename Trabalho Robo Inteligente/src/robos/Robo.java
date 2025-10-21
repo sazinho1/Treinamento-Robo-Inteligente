@@ -1,8 +1,8 @@
 package robos;
 
+import ambiente.AreaDeJogo;
 import excecoes.MovimentoInvalidoException;
 import io.ConsoleVisualizador;
-import simulacoes.AreaDeJogo;
 
 public abstract class Robo {
     protected  String cor;
@@ -11,6 +11,9 @@ public abstract class Robo {
     protected int jogadasValidas;
     protected int jogadasInvalidas;
     private boolean achouAlimento;
+    protected int prevX; 
+    protected int prevY; 
+    protected boolean explodido; 
     private ConsoleVisualizador visualizador;
 
     public Robo(String cor, ConsoleVisualizador visualizador) {
@@ -21,6 +24,9 @@ public abstract class Robo {
         jogadasInvalidas = 0;
         this.achouAlimento = false;
         this.visualizador = visualizador;
+        this.prevX = 0;
+        this.prevY = 0;
+        this.explodido = false; 
     }
     
     public String getCor() {
@@ -45,6 +51,19 @@ public abstract class Robo {
 
     public boolean isAchouAlimento() {
         return achouAlimento;
+    }
+
+    public boolean isExplodido(){
+        return this.explodido;
+    }
+
+    public void explodirRobo(){
+        this.explodido = true;
+    }
+    
+    public void voltarPosicaoAnterior(){
+        this.x = prevX;
+        this.y = prevY;
     }
 
     public void setX(int x) {
@@ -77,6 +96,10 @@ public abstract class Robo {
     }
 
     public void mover(String direction) throws MovimentoInvalidoException{
+        this.prevX = this.x;
+        this.prevY = this.y;
+        //salva a posição atual do x e do y
+        
         int novoX = this.x;
         int novoY = this.y;
         
@@ -92,6 +115,10 @@ public abstract class Robo {
     }
 
     public void mover(int num) throws MovimentoInvalidoException {
+        this.prevX = this.x;
+        this.prevY = this.y;
+        //salva a posição atual do x e do y
+
         int novoX = this.x;
         int novoY = this.y;
         

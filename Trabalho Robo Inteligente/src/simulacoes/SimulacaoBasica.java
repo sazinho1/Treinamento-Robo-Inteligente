@@ -1,15 +1,16 @@
 package simulacoes;
 
+import ambiente.AreaDeJogo;
 import excecoes.MovimentoInvalidoException;
 import io.ConsoleReceptor;
 import io.ConsoleVisualizador;
 import robos.RoboNormal;
 
 public class SimulacaoBasica {
-    private RoboNormal robo;
-    private AreaDeJogo area;
-    private ConsoleReceptor receptor;
-    private ConsoleVisualizador visualizador;
+    private final RoboNormal robo;
+    private final AreaDeJogo area;
+    private final ConsoleReceptor receptor;
+    private final ConsoleVisualizador visualizador;
 
     public SimulacaoBasica(RoboNormal robo, AreaDeJogo area, ConsoleReceptor receptor, ConsoleVisualizador visualizador) {
         this.robo = robo;
@@ -46,7 +47,7 @@ public class SimulacaoBasica {
             }
 
             try {
-                Thread.sleep(1000); 
+                Thread.sleep(1500); 
             } catch(InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

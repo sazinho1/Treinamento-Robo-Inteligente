@@ -1,9 +1,9 @@
 package principal;
 
+import ambiente.AreaDeJogo;
 import excecoes.*;
 import io.*;
 import robos.*;
-import simulacoes.AreaDeJogo;
 import simulacoes.SimulacaoBasica;
 
 public class Main1 {
@@ -12,13 +12,14 @@ public class Main1 {
         ConsoleReceptor receptor = new ConsoleReceptor();
         ConsoleVisualizador visualizador = new ConsoleVisualizador();
         RoboNormal robo = new RoboNormal("azul", visualizador);
+        visualizador.boasVindas();
         
         try {
             visualizador.determinarPosicaoXDoAlimento();
-            int xAlimento = receptor.determinarPosicaoXDoAlimento();
+            int xAlimento = receptor.determinarPosicaoX();
         
             visualizador.determinarPosicaoYDoAlimento();
-            int yAlimento = receptor.determinarPosicaoYDoAlimento();
+            int yAlimento = receptor.determinarPosicaoY();
 
             area = new AreaDeJogo(xAlimento, yAlimento);
         

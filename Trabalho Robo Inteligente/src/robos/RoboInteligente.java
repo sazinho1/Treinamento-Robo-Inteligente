@@ -32,17 +32,36 @@ public class RoboInteligente extends Robo {
         }
     }
 
+
     @Override
-    public void moverAleatorio() throws MovimentoInvalidoException {
-        String movimentoEscolhido;
+    public void moverAleatorio() { 
         String[] movimentosValidos = {"up", "down", "right", "left"};
         
-        do {
-            int index = random.nextInt(movimentosValidos.length);
-            movimentoEscolhido = movimentosValidos[index];
+        // Loop infinito que só será quebrado quando um movimento válido for feito
+        while (true) {
+            String movimentoEscolhido;
             
-        } while(movimentoEscolhido.equals(this.ultimoMovimentoInvalido)); 
+            // Lógica para escolher um movimento que NÃO seja o último inválido
+            do {
+                int index = random.nextInt(movimentosValidos.length);
+                movimentoEscolhido = movimentosValidos[index];
+            } while (movimentoEscolhido.equals(this.ultimoMovimentoInvalido)); 
 
-        mover(movimentoEscolhido);
+            try {
+                // Tenta mover
+                super.mover(movimentoEscolhido);
+                
+                // Se super.mover() NÃO lançou exceção, o movimento foi bom
+                this.ultimoMovimentoInvalido = null; // Limpa o erro
+                break; // Sai do loop 'while(true)' pq conseguiu mover
+
+            } catch (MovimentoInvalidoException e) {
+                // O movimento escolhido foi inválido
+                // Guarda o movimento que falhou
+                this.ultimoMovimentoInvalido = movimentoEscolhido.toLowerCase();
+                
+                // NÃO lança a exceção. O loop 'while(true)' vai rodar de novo e tentar outro movimento
+            }
+        }
     }
 }

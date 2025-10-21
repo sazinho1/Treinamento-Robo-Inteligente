@@ -1,14 +1,15 @@
 package simulacoes;
 
+import ambiente.AreaDeJogo;
 import excecoes.MovimentoInvalidoException;
 import io.ConsoleVisualizador;
 import robos.RoboNormal;
 
 public class SimulacaoAleatoria {
-    private RoboNormal robo1;
-    private RoboNormal robo2;
-    private AreaDeJogo area;
-    private ConsoleVisualizador visualizador;
+    private final RoboNormal robo1;
+    private final RoboNormal robo2;
+    private final AreaDeJogo area;
+    private final ConsoleVisualizador visualizador;
 
     public SimulacaoAleatoria(RoboNormal r1, RoboNormal r2, AreaDeJogo area, ConsoleVisualizador visualizador) {
         this.robo1 = r1;
@@ -33,7 +34,7 @@ public class SimulacaoAleatoria {
                 }
 
             } catch(MovimentoInvalidoException e) {
-                System.err.println("Robô " + robo1.getCor() + " (Tentativa inválida): " + e.getMessage());
+                System.err.println("Robô " + robo1.getCor() + " (Tentativa inválida): " + e.getMessage() + "\n");
             }
 
             if(robo1Achou) break;
@@ -55,7 +56,7 @@ public class SimulacaoAleatoria {
             if(robo2Achou)break;
             
             try {
-                Thread.sleep(1000); 
+                Thread.sleep(1500); 
             } catch(InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

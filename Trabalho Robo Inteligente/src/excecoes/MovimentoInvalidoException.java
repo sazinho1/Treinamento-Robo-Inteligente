@@ -18,6 +18,6 @@ public class MovimentoInvalidoException extends Exception{
     }
 
     public MovimentoInvalidoException(int movimento) {
-        super("O movimento '" + movimento + "' é inválido, pois resulta em coordenada negativa (x < 0 ou y < 0) ou excede a área de jogo (x < 4 ou y < 4).");
+        super("O movimento '" + movimento + "' é inválido, pois resulta em coordenada negativa (x < 0 ou y < 0) ou excede a área de jogo (x < 4 ou y < 4).\n");
     }
 }

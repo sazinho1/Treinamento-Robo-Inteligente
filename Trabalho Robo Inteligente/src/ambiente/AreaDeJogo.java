@@ -1,4 +1,4 @@
-package simulacoes;
+package ambiente;
 
 import excecoes.CoordenadaInvalidaException;
 
