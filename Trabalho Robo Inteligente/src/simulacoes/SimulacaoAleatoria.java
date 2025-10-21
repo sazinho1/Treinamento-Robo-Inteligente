@@ -34,7 +34,7 @@ public class SimulacaoAleatoria {
                 }
 
             } catch(MovimentoInvalidoException e) {
-                System.err.println("Robô " + robo1.getCor() + " (Tentativa inválida): " + e.getMessage() + "\n");
+                visualizador.imprimirMovimentoInvalido(robo1.getCor(), e.getMessage());
             }
 
             if(robo1Achou) break;
@@ -50,7 +50,7 @@ public class SimulacaoAleatoria {
                 }
 
             } catch(MovimentoInvalidoException e) {
-                System.err.println("Robô " + robo2.getCor() + " (Tentativa inválida): " + e.getMessage());
+               visualizador.imprimirMovimentoInvalido(robo2.getCor(), e.getMessage());;
             }
 
             if(robo2Achou)break;

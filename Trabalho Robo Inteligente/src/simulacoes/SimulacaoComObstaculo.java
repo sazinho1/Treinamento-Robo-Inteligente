@@ -104,12 +104,12 @@ public class SimulacaoComObstaculo {
 
             // Condição de parada caso os dois explodam
             if (roboNormal.isExplodido() && roboInteligente.isExplodido()) {
-                System.out.println("AMBOS OS ROBÔS EXPLODIRAM! Fim de jogo.");
+                visualizador.imprimirAmbosExplodiram();
                 break;
             }
         }
 
-        System.out.println("\n--- FIM DA SIMULAÇÃO ---");
+        visualizador.imprimirFimDeSimulacao();
         visualizador.imprimirJogadasValidas(roboNormal.getCor(), roboNormal.getJogadasValidas());
         visualizador.imprimirJogadasInvalidas(roboNormal.getCor(), roboNormal.getJogadasInvalidas());
         visualizador.imprimirJogadasValidas(roboInteligente.getCor(), roboInteligente.getJogadasValidas());
@@ -130,7 +130,7 @@ public class SimulacaoComObstaculo {
                 ((RoboInteligente) robo).moverAleatorio(); // (Lembrando que este não lança exceção)
             }
         } catch (MovimentoInvalidoException e) {
-            System.err.println("Robô " + robo.getCor() + " (Tentativa inválida): " + e.getMessage());
+            visualizador.imprimirMovimentoInvalido(robo.getCor(), e.getMessage());
         }
 
         // Só checa colisão se o robô não explodiu *neste turno* (caso de moverAleatorio do Normal)

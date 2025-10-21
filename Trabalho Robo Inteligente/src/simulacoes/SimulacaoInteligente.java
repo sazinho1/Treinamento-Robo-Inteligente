@@ -42,7 +42,7 @@ public class SimulacaoInteligente {
                         }
 
                     } catch (MovimentoInvalidoException e) {
-                        ConsoleVisualizador.imprimirErroCoordenadaInvalida(e);
+                        visualizador.imprimirMovimentoInvalido(robo1.getCor(), e.getMessage());
                     }
                 }
 

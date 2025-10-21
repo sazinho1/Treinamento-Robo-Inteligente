@@ -48,6 +48,18 @@ public class ConsoleVisualizador {
         System.out.println("Não foi possível iniciar o jogo: coordenadas inválidas.");
     }
 
+    public void imprimirErroGenerico(String mensagemErro) {
+        System.err.println(mensagemErro);
+    }
+
+    public static void imprimirErroInputInvalido() {
+        System.err.println(ANSI_VERMELHO_BRILHANTE + "Erro: Entrada inválida. Por favor, digite um número inteiro." + ANSI_RESET);
+    }
+
+    public void imprimirMovimentoInvalido(String corRobo, String mensagemErro) {
+        System.err.println(ANSI_VERMELHO_BRILHANTE + "Robô " + corRobo + " (Tentativa inválida): " + mensagemErro + ANSI_RESET);
+    }
+
     public void imprimirJogadasValidas(String cor, int jogadas) {
         System.out.println("Robô (" + cor + ") fez: " + jogadas + " jogadas válidas.\n");
     }
@@ -95,6 +107,11 @@ public class ConsoleVisualizador {
 
     public void imprimirExplodiu(String cor){
         System.out.println("O robô " + cor + " explodiu. \n");
+    }
+
+    public void imprimirAmbosExplodiram() {
+        System.out.println(ANSI_VERMELHO_BRILHANTE + "AMBOS OS ROBÔS EXPLODIRAM! Fim de jogo." + ANSI_RESET);
+        System.out.println(); //Quebra a linha
     }
 
     public void imprimirBateuRocha(String cor){
@@ -149,5 +166,9 @@ public class ConsoleVisualizador {
         System.out.println("  +----------");
         System.out.println("    0 1 2 3 "); // Imprime as coordenadas X
         System.out.println();// Quebra a linha
+    }
+
+    public void imprimirFimDeSimulacao() {
+        System.out.println(ANSI_CINZA + "\n--- FIM DA SIMULAÇÃO ---" + ANSI_RESET);
     }
 }

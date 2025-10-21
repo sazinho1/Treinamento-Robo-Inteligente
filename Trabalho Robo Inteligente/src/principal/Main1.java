@@ -24,7 +24,7 @@ public class Main1 {
             area = new AreaDeJogo(xAlimento, yAlimento);
         
         } catch (CoordenadaInvalidaException e) {
-            System.out.println("Erro: " + e.getMessage());
+            ConsoleVisualizador.imprimirErroCoordenadaInvalida(e);
         }
 
         if (area == null) {

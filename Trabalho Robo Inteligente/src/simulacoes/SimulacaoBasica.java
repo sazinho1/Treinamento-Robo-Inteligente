@@ -35,11 +35,11 @@ public class SimulacaoBasica {
                     robo.mover(mover);
 
                 } catch(MovimentoInvalidoException ex) {
-                    System.err.println(ex.getMessage());
+                    visualizador.imprimirErroGenerico(ex.getMessage());
             }
     
             } catch(MovimentoInvalidoException e) {
-                System.err.println(e.getMessage());
+                visualizador.imprimirErroGenerico(e.getMessage());
             }
 
             if (robo.verificarEcontroAlimento(area)) {
